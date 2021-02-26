@@ -6,6 +6,16 @@
 [![pkgdown](https://github.com/js2264/mondrianaRt/workflows/pkgdown/badge.svg)](https://github.com/js2264/mondrianaRt/actions)
 <!-- badges: end -->
 
+## Quick use 
+
+```r
+library(magrittr)
+library(mondrianaRt)
+tileSet(ratio = 2/3, levels = 3) %>% plotTiles()
+```
+
+![](inst/figures/mondrian.png)
+
 ## Acknowledgments
 
 https://github.com/nvdv/mondrianify
