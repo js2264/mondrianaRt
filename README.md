@@ -11,6 +11,7 @@
 https://github.com/nvdv/mondrianify
 https://github.com/kmcelwee/mondrianify
 https://github.com/yanhann10/mondrianify
+https://www.cs.cornell.edu/courses/cs1110/2016sp/lectures/04-19-16/21.RecursionH.pdf
 
 ## Further inspiration 
 
