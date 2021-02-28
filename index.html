@@ -75,20 +75,64 @@
 <h2 class="hasAnchor">
 <a href="#quick-use" class="anchor"></a>Quick use</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/js2264/mondrianaRt">mondrianaRt</a></span><span class="op">)</span>
-<span class="fu">tileSet</span><span class="op">(</span>ratio <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span>, levels <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">plotTiles</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/js2264/mondrianaRt">mondrianaRt</a></span><span class="op">)</span>
+<span class="va">`%&gt;%`</span> <span class="op">&lt;-</span> <span class="fu">magrittr</span><span class="fu">::</span><span class="va">`%&gt;%`</span>
+<span class="fu"><a href="reference/tileSet.html">tileSet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/plotTiles.html">plotTiles</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/mondrian.png"></p>
+</div>
+<div id="art-customization" class="section level2">
+<h2 class="hasAnchor">
+<a href="#art-customization" class="anchor"></a>Art customization</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/tileSet.html">tileSet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/plotTiles.html">plotTiles</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>The ratio of the plot is controlled by the <code>ratio</code> argument (<code>1</code> by default, i.e. a square plot).</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/tileSet.html">tileSet</a></span><span class="op">(</span>ratio <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/plotTiles.html">plotTiles</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>How “deep” the plot is (i.e. how recursive the internal loop is) is controlled by the <code>levels</code> argument (<code>4</code> by default).</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/tileSet.html">tileSet</a></span><span class="op">(</span>levels <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/plotTiles.html">plotTiles</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>By default, some tiles are randomly split in 2 (either vertically or horizontally), rather than in 4. This is controlled by the <code>filter</code> argument (<code>TRUE</code> by default).</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/tileSet.html">tileSet</a></span><span class="op">(</span>levels <span class="op">=</span> <span class="fl">10</span>, filter <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/plotTiles.html">plotTiles</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>One can also control the minimum stretch (both horizontally and vertically) of each tile. By default, this ensures that the tiles are somewhat consistent. This can be reduced/increased with the <code>min.stretch</code> argument (<code>0.04</code>, or 4% by default)</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/tileSet.html">tileSet</a></span><span class="op">(</span>levels <span class="op">=</span> <span class="fl">10</span>, filter <span class="op">=</span> <span class="cn">FALSE</span>, min.stretch <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/plotTiles.html">plotTiles</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>This option can also be deactivated by using <code>min.stretch = 0</code>. This leads to a large increase of tiles, since they are all considered valid !</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/tileSet.html">tileSet</a></span><span class="op">(</span>levels <span class="op">=</span> <span class="fl">10</span>, filter <span class="op">=</span> <span class="cn">FALSE</span>, min.stretch <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/plotTiles.html">plotTiles</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="many-plots-at-once" class="section level2">
+<h2 class="hasAnchor">
+<a href="#many-plots-at-once" class="anchor"></a>Many plots at once</h2>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">30</span>, <span class="kw">function</span><span class="op">(</span><span class="va">seed</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="va">seed</span><span class="op">)</span>
+    <span class="va">ratio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1.5</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span>
+    <span class="va">level</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">1</span><span class="op">)</span>
+    <span class="va">whites</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.8</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span>
+    <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tileSet.html">tileSet</a></span><span class="op">(</span>ratio <span class="op">=</span> <span class="va">ratio</span>, levels <span class="op">=</span> <span class="va">level</span>, seed <span class="op">=</span> <span class="va">seed</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/plotTiles.html">plotTiles</a></span><span class="op">(</span>white.density <span class="op">=</span> <span class="va">whites</span><span class="op">)</span>
+    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">ggsave</span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">'mondrian_seed-{seed}.png'</span><span class="op">)</span>, w <span class="op">=</span> <span class="fl">10</span>, h <span class="op">=</span> <span class="fl">10</span><span class="op">*</span><span class="va">ratio</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="acknowledgments" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acknowledgments" class="anchor"></a>Acknowledgments</h2>
-<p><a href="https://github.com/nvdv/mondrianify" class="uri">https://github.com/nvdv/mondrianify</a><br><a href="https://github.com/kmcelwee/mondrianify" class="uri">https://github.com/kmcelwee/mondrianify</a><br><a href="https://github.com/yanhann10/mondrianify" class="uri">https://github.com/yanhann10/mondrianify</a><br><a href="https://www.cs.cornell.edu/courses/cs1110/2016sp/lectures/04-19-16/21.RecursionH.pdf" class="uri">https://www.cs.cornell.edu/courses/cs1110/2016sp/lectures/04-19-16/21.RecursionH.pdf</a></p>
-</div>
-<div id="further-inspiration" class="section level2">
-<h2 class="hasAnchor">
-<a href="#further-inspiration" class="anchor"></a>Further inspiration</h2>
-<p><a href="https://github.com/anvaka/city-script" class="uri">https://github.com/anvaka/city-script</a></p>
+<p>I got some inspiration from the previous attempts to reproduce/enhance the art style from Piet Mondrian:</p>
+<ul>
+<li>
+<a href="https://github.com/nvdv/mondrianify" class="uri">https://github.com/nvdv/mondrianify</a><br>
+</li>
+<li>
+<a href="https://github.com/kmcelwee/mondrianify" class="uri">https://github.com/kmcelwee/mondrianify</a><br>
+</li>
+<li>
+<a href="https://github.com/yanhann10/mondrianify" class="uri">https://github.com/yanhann10/mondrianify</a><br>
+</li>
+<li>
+<a href="https://www.cs.cornell.edu/courses/cs1110/2016sp/lectures/04-19-16/21.RecursionH.pdf" class="uri">https://www.cs.cornell.edu/courses/cs1110/2016sp/lectures/04-19-16/21.RecursionH.pdf</a><br>
+</li>
+<li><a href="https://github.com/anvaka/city-script" class="uri">https://github.com/anvaka/city-script</a></li>
+</ul>
 </div>
 </div>
   </div>
