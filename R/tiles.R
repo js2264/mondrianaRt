@@ -57,6 +57,8 @@ tileIteration <- function(tile, level, seed, filter, min.stretch) {
     set.seed(seed) 
     randX <- sample(seq(tile$x[1], tile$x[3], length.out = 100), 1)
     randY <- sample(seq(tile$y[1], tile$y[2], length.out = 100), 1)
+    # randX <- seq(tile$x[1], tile$x[3], length.out = 100)[rbinom(100,n=1,prob=0.5)]
+    # randY <- seq(tile$y[1], tile$y[2], length.out = 100)[rbinom(100,n=1,prob=0.5)]
     # ------- Divide tile in 4, with random vertical/horizontal/cross splitting
     if (filter) {
         split <- sample(c('horiz', 'vertic', 'both'))[1]

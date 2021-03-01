@@ -54,12 +54,21 @@ tileSet(levels = 10, filter = FALSE, min.stretch = 0) %>% plotTiles()
 ## Many plots at once
 
 ```r
-lapply(1:30, function(seed) {
+lapply(1:50, function(seed) {
     message(seed)
+    set.seed(seed)
     ratio <- sample(seq(0.5, 1.5, by = 0.1), 1)
-    level <- sample(1:4, 1)
+    level <- sample(2:8, 1)
+    filter <- sample(c(TRUE, FALSE))[1]
     whites <- sample(seq(0.2, 0.8, by = 0.1), 1)
-    p <- tileSet(ratio = ratio, levels = level, seed = seed) %>% plotTiles(white.density = whites)
+    stretch <- sample(seq(0.02, 0.10, 0.001))[1]
+    p <- tileSet(
+        ratio = ratio, 
+        levels = level, 
+        seed = seed, 
+        filter = filter, 
+        min.stretch = stretch
+    ) %>% plotTiles(white.density = whites)
     ggplot2::ggsave(glue::glue('mondrian_seed-{seed}.png'), w = 10, h = 10*ratio)
 })
 ```
